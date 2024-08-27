@@ -2,8 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const usersFilePath = path.join(__dirname, 'data', 'users.json'); //http://localhost:3000/api/users - Usuários
-const docsFilePath = path.join(__dirname, 'data', 'docs.json'); //http://localhost:3000/api/docs - Documentos
+const usersFilePath = path.join(__dirname, 'data', 'users.json'); //http://localhost:3300/api/users - Usuários
+const docsFilePath = path.join(__dirname, 'data', 'docs.json'); //http://localhost:3300/api/docs - Documentos
 
 
 const readJSONFile = (filePath) => {
@@ -46,7 +46,7 @@ const handleRequest = (request, response) => {
 
 const server = http.createServer(handleRequest);
 
-const port = 3000;
+const port = 3300;
 
 server.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
