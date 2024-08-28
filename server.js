@@ -11,8 +11,7 @@ const docsFilePath = path.join(__dirname, 'data', 'docs.json');
 const readJSONFile = (filePath) => {
     try {
         const data = fs.readFileSync(filePath, 'utf-8');
-        JSON.parse(data);
-        return data;
+        return JSON.parse(data);
     } catch (err) {
         console.error(`Erro ao ler o arquivo ${filePath}: ${err.message}`);
         return null;
@@ -24,11 +23,19 @@ const docsData = readJSONFile(docsFilePath);
 
 app.get('/api/users', (req, res) => {
     if (usersData) {
-        try {
-            const parsedData = JSON.parse(usersData);
-            res.status(200).json(parsedData);
-        } catch (err) {
-            res.status(500).send('Erro ao analisar dados dos usuários.');
+        res.status(200).json(usersData);
+    } else {
+        res.status(500).send('Erro ao carregar dados dos usuários.');
+    }
+});
+
+app.get('/api/users/:id', (req, res) => {
+    if (usersData) {
+        const user = usersData.find(user => user.id === req.params.id);
+        if (user) {
+            res.status(200).json(user);
+        } else {
+            res.status(404).send('Usuário não encontrado.');
         }
     } else {
         res.status(500).send('Erro ao carregar dados dos usuários.');
@@ -37,11 +44,19 @@ app.get('/api/users', (req, res) => {
 
 app.get('/api/docs', (req, res) => {
     if (docsData) {
-        try {
-            const parsedData = JSON.parse(docsData);
-            res.status(200).json(parsedData);
-        } catch (err) {
-            res.status(500).send('Erro ao analisar dados dos documentos.');
+        res.status(200).json(docsData);
+    } else {
+        res.status(500).send('Erro ao carregar dados dos documentos.');
+    }
+});
+
+app.get('/api/docs/:id', (req, res) => {
+    if (docsData) {
+        const doc = docsData.find(doc => doc.id === req.params.id);
+        if (doc) {
+            res.status(200).json(doc);
+        } else {
+            res.status(404).send('Documento não encontrado.');
         }
     } else {
         res.status(500).send('Erro ao carregar dados dos documentos.');
