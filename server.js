@@ -31,7 +31,8 @@ app.get('/api/users', (req, res) => {
 
 app.get('/api/users/:id', (req, res) => {
     if (usersData) {
-        const user = usersData.find(user => user.id === req.params.id);
+        const userId = parseInt(req.params.id, 10); // Converte o id do parâmetro para número
+        const user = usersData.find(user => user.id === userId);
         if (user) {
             res.status(200).json(user);
         } else {
@@ -52,7 +53,8 @@ app.get('/api/docs', (req, res) => {
 
 app.get('/api/docs/:id', (req, res) => {
     if (docsData) {
-        const doc = docsData.find(doc => doc.id === req.params.id);
+        const docId = parseInt(req.params.id, 10); // Converte o id do parâmetro para número
+        const doc = docsData.find(doc => doc.id === docId);
         if (doc) {
             res.status(200).json(doc);
         } else {
