@@ -24,12 +24,17 @@ Requisitos
 •	Node.js e npm (ou yarn) instalados.
 
 Clonando o Repositório
+
 •	git clone https://github.com/EduardoTCaetano/API-NodeJs.git
+
 •	cd API-NodeJs
 
 Instalando Dependências
+
 •	npm install
+
 ou
+
 •	yarn install
 
 
