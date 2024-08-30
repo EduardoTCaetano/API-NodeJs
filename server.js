@@ -31,7 +31,7 @@ app.get('/api/users', (req, res) => {
 
 app.get('/api/users/:id', (req, res) => {
     if (usersData) {
-        const userId = parseInt(req.params.id, 10); // Converte o id do parâmetro para número
+        const userId = parseInt(req.params.id, 10); 
         const user = usersData.find(user => user.id === userId);
         if (user) {
             res.status(200).json(user);
