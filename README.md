@@ -29,7 +29,7 @@ Clonando o Repositório
 
 •	cd API-NodeJs
 
-Instalando Dependências
+  Instalando Dependências
 
 •	npm install
 
